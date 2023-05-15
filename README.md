@@ -1,47 +1,60 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-24ddc0f5d75046c5622901739e7c5dd533143b0c8e959d652212380cedb1ea36.svg)](https://classroom.github.com/a/_53rbxR4)
-[![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-718a45dd9cf7e7f842a935f5ebbe5719a5e09af4491e668f4dbf3b35d5cca122.svg)](https://classroom.github.com/online_ide?assignment_repo_id=11007111&assignment_repo_type=AssignmentRepo)
+# House Wallet 🏠
+
+
+### Project Description :page_facing_up:
+
+A web-based application that helps users to manage their household budgets effectively where it provides users with the ability to track their expenses, set budgets, and monitor their spending habits. It includes the following features:
+
+1.	Database for storing multiple users data where a user can login to his account from any device, and more than one user can track their budgets using the same device, making it easier for families to manage their budgets together.
+
+2.	Storing purchases where users are allowed to input their purchases and their dates, which will be displayed in a list format. Users can filter the list based on prices range or purchase category.
+
+3.	Providing users with a summary of their total remaining, consumed, and original budget. This will help users to track their spending and adjust their budgets accordingly.
+
+4.	Allowing user to modify their budget details from the settings menu, such as initial budget and consumption alert values. 
+
+5.	Storing the net budget of the previous months, allowing users to track and adjust their spending habits over time.
+
+The application UI is built on desktop-first design basis. It's responsive on all devices.
+
+
+### Files Included 	:file_folder:
+
+- Budget.php
+- User.php
+- Purchase.php
+- index.php
+- past.php
+- purchases.php
+- settings.php
+- login.php
+- config.php
+- header.php
+- sidenav.php
+- mobilenav.php
+- processing.php
+- house_wallet.sql
+- CSS files
+- JavaScript files
+- Reports and Documents
+
+### Tech stack 💻
+
+<img src="https://www.freepnglogos.com/uploads/logo-mysql-png/logo-mysql-mysql-logo-png-images-are-download-crazypng-6.png" alt="mysql" width="50" height="25">   <img src="https://img.freepik.com/free-icon/php_318-698171.jpg" alt="php" width="25" height="25">
+<img src="https://www.freepnglogos.com/uploads/html5-logo-png/html5-logo-best-web-design-psd-html-cms-development-ecommerce-6.png" alt="html & css" width="75" height="30">  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Bootstrap_logo.svg/640px-Bootstrap_logo.svg.png" alt="bootstrap" width="25" height="25"> 
+
+### Pre-requisites :grey_question:
+
+None
+
+<!-- ### Link to website :link:
+
+**<a href="#"> Click me! </a>** -->
+
+### Author 🖊️
+
+**Mariam Atef Hassan  - May 2023**
 
 <hr>
 
-# House Budgeting Web App using PHP and MySQL
-
-## Introduction: 
-
-The House Budgeting Web App is a web-based application that helps users to manage their household budgets effectively. The app is implemented using PHP and MySQL, and it includes features such as user database, displaying purchasing lists, modifying & displaying the budget, in addition to many other features.
-
-## Objective: 
-
-The primary objective of this project is to develop a web-based application that will help users to manage their household budgets effectively. The application will provide users with the ability to track their expenses, set budgets, and monitor their spending habits.
-
-## Features: 
-
-The House Budgeting Web App includes the following features:
-
-1.	Multiple Users Accessing Same Device with Different Data: Users can create an account and login to the web app from any device. The app will allow multiple users to access the same device with different data, making it easier for families to manage their budgets together.
-
-2.	Displaying a List of Purchases and their Dates: The app will allow users to input their purchases and their dates, which will be displayed in a list format. Users can filter the list based on date, purchase type, or other criteria.
-
-3.	Displaying Total Remaining, Consumed, and Original Budget: The app will provide users with a summary of their total remaining, consumed, and original budget. This will help users to track their spending and adjust their budgets accordingly.
-
-4.	Modifying Budget from Settings: Users can modify their budget from the settings menu. The app will allow users to set their budget limits and alert them when they are close to reaching their limits.
-
-5.	Storing Net Budget of Last 6 Months: The app will store the net budget of the last 6 months, allowing users to track their spending habits over time. Users can use this data to adjust their budgets and improve their spending habits.
-
-6.	Recommendation on Lowering Expenses Considering a Specific Purchase: The app will provide recommendations on how to lower expenses based on a specific purchase. 
-
-## Technology Stack: 
-
-The App will be implemented using the following technology stack:
-
-•	PHP: The backend of the application will be developed using PHP, since it provides excellent support for MySQL databases.
-
-•	MySQL: The database of the application will be developed using MySQL, since it’s fast, reliable and a RDBMS, making it an ideal choice for web-based applications.
-
-•	HTML/CSS/Bootstrap: The frontend of the application will be developed using HTML, CSS & Bootstrap, which are the standard for building web pages. 
-
-•	JavaScript: The application will use JavaScript to provide dynamic features and interactivity. 
-
-## Conclusion:
-
-The House Budgeting Web App is a useful tool for anyone who wants to manage their household budgets effectively. With its user-friendly interface and powerful features, the app will help users to track their expenses, set budgets, and monitor their spending habits. By implementing this web app using PHP and MySQL, users can access their data from anywhere and on any device.
-
+#### Enjoy :wink:

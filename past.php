@@ -137,7 +137,7 @@ $place = 'past data';
                             <?php
                             // data to be displayed in elements
                             $mostPurchasedCategory = Purchase::most_purchased_category($budget->getMonth(), get_id(), $budget->getYear());
-                            $payCount = Purchase::visa_cash_count($budget->getMonth(), get_id(), $budget->getYear());
+                            $payCount = Purchase::visa_cash_count( get_id(), $budget->getYear(),$budget->getMonth());
                             $visa = $payCount["visa"];
                             $cash = $payCount["cash"];
                             ?>

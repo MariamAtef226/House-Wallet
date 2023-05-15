@@ -69,18 +69,24 @@ class Purchase
         }
     }
 
-    public static function visa_cash_count($month, $user_id, $year)
+    public static function visa_cash_count($user_id, $year,$month = null)
     {
         try {
             $connect = pdo_connect();
-            $start = "'" . $year . "-" . $month . "-1'";
-            $end = "'" . $year . "-" . $month . "-31'";
-            $statment = $connect->prepare("select payment,count(*) as theirCount from purchase where user_id = :id and purchase_date between " . $start . " and " . $end . " GROUP BY payment");
+            if (empty($month)) {
+                $start = "'" . $year . "-1-1'";
+                $end = "'" . $year . "-12-31'";
+                $statment = $connect->prepare("select payment,count(*) as theirCount from purchase where user_id = :id and purchase_date between " . $start . " and " . $end . " GROUP BY payment");
+            } else {
+
+                $start = "'" . $year . "-" . $month . "-1'";
+                $end = "'" . $year . "-" . $month . "-31'";
+                $statment = $connect->prepare("select payment,count(*) as theirCount from purchase where user_id = :id and purchase_date between " . $start . " and " . $end . " GROUP BY payment");
+            }
             $statment->bindValue("id", $user_id);
 
             $statment->execute();
 
-            // if found
             $p = array();
             while ($purchase = $statment->fetchObject()) {
                 $p += array($purchase->payment => $purchase->theirCount);
@@ -250,7 +256,6 @@ class Purchase
             return false;
         }
     }
-
 }
 
 

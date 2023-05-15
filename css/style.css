@@ -1,5 +1,5 @@
 :root {
-  --lightest-green: rgb(220, 230, 221);
+  --lightest-green: #d1e7dd;
   --success: #198754;
 }
 
@@ -109,8 +109,16 @@ body {
   border-left: #198754 solid 5px;
 }
 
+/* purchases page background */
 
+.wave-bg{
+  background-repeat: no-repeat;
+  background-position: bottom;
+}
 
+.the-table{
+  background-color: rgba(255,255,255,0.7);
+}
 /* responsive styling -- mobile view */
 /* following Desktop First scheme*/
 
@@ -138,6 +146,21 @@ body {
     }
     .add-caption{
       align-items: center;
+    }
+    .disp-purchases-form{
+      text-align: center;
+      font-size: 1.3rem !important;
+      justify-content: center;
+    }
+    select{
+      font-size: 1.2rem !important;
+
+    }
+    .p-table > table > thead > tr > th, .p-table > table > tbody > tr > td{
+      font-size:0.8rem !important;
+    }
+    .p-table{
+      padding:0 !important;
     }
 
 }

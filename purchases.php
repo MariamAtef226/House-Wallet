@@ -39,7 +39,8 @@ $place = 'purchases';
 ?>
 
 
-<body>
+<body class="wave-bg" style="background-image:url('imgs/wave.svg')">
+    
     <div class="row m-0">
 
         <?php
@@ -122,38 +123,44 @@ $place = 'purchases';
 
                 <!-- displayed month filter -->
                 <div style="font-size:2.3rem;" class="pt-4">
-                    <form method="get" action="purchases.php" onchange="submit()">
-                        Displaying Purchases for Month:
-                        <select name="monthyear" class="text-success p-2 border border-white">
-                            <?php
-                            if (!empty($pairs)) {
-                                foreach ($pairs as $pair) {
-                                    $pair = explode("-", $pair);
-                                    $m = $pair[0];
-                                    $y = $pair[1];
-                            ?>
-                                    <option value="<?= $m . "" . $y ?>" <?= !empty($_GET['monthyear']) && $_GET['monthyear'] == $m . $y ? " selected " : " " ?>><?= $m . " " . $y ?></option>
-                            <?php }
-                            }
-                            ?>
+                    <form class="disp-purchases-form mb-0 d-flex align-items-center" method="get" action="purchases.php" onchange="submit()">
+                        <div class="col-auto">
+                            <label class="col-form-label pe-2"> Purchases for Month</label>
+                        </div>
+                        <div class="col-auto">
 
-                        </select>
+
+                            <select name="monthyear" style="font-size:2rem;" class="text-success p-2 form-select border-white ">
+                                <?php
+                                if (!empty($pairs)) {
+                                    foreach ($pairs as $pair) {
+                                        $pair = explode("-", $pair);
+                                        $m = $pair[0];
+                                        $y = $pair[1];
+                                ?>
+                                        <option style="font-size:2rem;" value="<?= $m . "" . $y ?>" <?= !empty($_GET['monthyear']) && $_GET['monthyear'] == $m . $y ? " selected " : " " ?>><?= $m . " " . $y ?></option>
+                                <?php }
+                                }
+                                ?>
+
+                            </select>
+                        </div>
                     </form>
                 </div>
 
             </div>
 
             <!-- purchases table -->
-            <div class="p-2 table-responsive ">
-                <table class="table table-striped table-hover text-center ">
+            <div class="p-2 pt-0 table-responsive p-table">
+                <table class="table table-striped table-hover text-center the-table">
                     <thead class="table-success">
                         <tr>
-                            <th scope="col">#</th>
+                            <th scope="col" class="d-none d-md-table-cell">#</th>
                             <th scope="col">Date</th>
                             <th scope="col">Purchase</th>
                             <th scope="col">Category</th>
                             <th scope="col">Price</th>
-                            <th scope="col">Payment Method</th>
+                            <th scope="col">Paid by</th>
                             <?= $month == date('m') && $year == date('Y') ? '<th scope="col">Remove</th>' : '' ?>
                         </tr>
                     </thead>
@@ -166,7 +173,7 @@ $place = 'purchases';
                             foreach ($purchases as $p) {
                         ?>
                                 <tr>
-                                    <th scope="row"><?= $i++ ?></th>
+                                    <th scope="row" class="d-none d-md-table-cell"><?= $i++ ?></th>
                                     <td><?= $p->getDate(); ?></td>
                                     <td><?= $p->getName(); ?></td>
                                     <td><?= $p->getCategory(); ?></td>

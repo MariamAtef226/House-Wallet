@@ -147,14 +147,13 @@ body {
     .add-caption{
       align-items: center;
     }
-    .disp-purchases-form{
+    .disp-purchases-form, .past-form-filter{
       text-align: center;
       font-size: 1.3rem !important;
       justify-content: center;
     }
     select{
       font-size: 1.2rem !important;
-
     }
     .p-table > table > thead > tr > th, .p-table > table > tbody > tr > td{
       font-size:0.8rem !important;

@@ -74,7 +74,7 @@ $place = 'purchases';
                                     <div>
                                         <label class="form-label">Category</label>
                                         <select name="category" class="form-control">
-                                            <option value=""></option>
+                                            <option value="">Select a category to filter upon</option>
                                             <?php
                                             foreach ($categories as $c) {
                                             ?>
@@ -88,14 +88,14 @@ $place = 'purchases';
                                 <div class="row mb-4">
                                     <div>
                                         <label class="form-label">Cost Above</label>
-                                        <input type="text" class="form-control" id="above" name="above">
+                                        <input type="text" class="form-control" id="above" name="above" placeholder="Display purchases with cost above ...">
                                     </div>
                                 </div>
 
                                 <div class="row mb-4">
                                     <div>
                                         <label class="form-label">Cost Below</label>
-                                        <input type="text" class="form-control" id="below" name="below">
+                                        <input type="text" class="form-control" id="below" name="below" placeholder="Display purchases with cost below ...">
                                     </div>
                                 </div>
                                 <input type="hidden" class="form-control" id="costbelow" name="monthyear" value=<?= getMonthName($month) . $year ?>>

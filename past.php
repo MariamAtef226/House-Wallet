@@ -34,10 +34,12 @@ $place = 'past data';
             <div class="header-purchases">
 
                 <!-- displayed month filter -->
-                <div style="font-size:2.5rem;" class="pt-3 text-center bg-success text-light pb-1">
-                    <form method="get" action="past.php" onchange="submit()">
-                        Displaying Budgets for the year:
-                        <select name="year" class="text-success p-2 border border-success">
+                <div style="font-size:2rem;" class="pt-2 text-center bg-success text-light">
+                    <form method="get" action="past.php" onchange="submit()" class="p-2 d-flex align-items-center past-form-filter">
+                        <label class="form-label col-auto ps-md-3 pe-2 pe-md-3"> Displaying Budgets for year
+                        </label>
+                            <div class="col-auto">
+                        <select style="font-size:1.6rem;" name="year" class="text-success border-success form-select ">
                             <?php
                             if (!empty($years)) {
                                 foreach ($years as $y) {
@@ -48,6 +50,7 @@ $place = 'past data';
                             ?>
 
                         </select>
+                        </div>
                     </form>
 
                 </div>

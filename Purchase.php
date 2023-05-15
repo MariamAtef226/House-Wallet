@@ -160,7 +160,7 @@ class Purchase
         if ($below != 0) {
             $query = $query . "and price <= " . $below . " ";
         }
-        $query = $query." order by purchase_date DESC";
+        $query = $query . " order by purchase_date DESC";
 
 
         try {
@@ -226,6 +226,31 @@ class Purchase
             return false;
         }
     }
+
+    public static function get_purchases_percentage($year, $user_id)
+    {
+        try {
+            $connect = pdo_connect();
+            $start = "'" . $year . "-1-1'";
+            $end = "'" . $year . "-12-31'";
+            $statment = $connect->prepare("select product_category, SUM(price) AS total_spending FROM purchase WHERE (user_id = :id and purchase_date between " . $start . " and " . $end . " ) GROUP BY product_category ORDER BY total_spending");
+            $statment->bindValue("id", $user_id);
+            $statment->execute();
+
+            // if found
+            while ($p = $statment->fetchObject()) {
+                $pair[] = array($p->product_category, $p->total_spending);
+            }
+            $connect = null; //end connection before return
+            if (!empty($pair))
+                return $pair;
+            else return false;
+        } catch (PDOException $e) {
+            catchErrorToFile($e->getMessage(), $e->getCode());
+            return false;
+        }
+    }
+
 }
 
 

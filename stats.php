@@ -31,6 +31,25 @@ if (!empty($savedPercentage) && !empty($savedPercentageMonths)) {
     $savedPercentageMonths = implode(", ", $savedPercentageMonths);
 }
 
+// data for second chart: percentage of purchases for each category
+
+$purchases = Purchase::get_purchases_percentage($year, get_id());
+$tot_consumed = Budget::total_consumption_per_year(get_id(), $year);
+if (!empty($tot_consumed)) {
+    foreach ($purchases as $purchase) {
+        $cats[] = "'" . $purchase[0] . "'";
+        $cat_percentage[] = ($purchase[1] / $tot_consumed) * 100;
+    }
+}
+if (!empty($cats) && !empty($cat_percentage)) {
+
+    if (array_sum($cat_percentage) < 100) {
+        $cats[] = "'Others'";
+        $cat_percentage[] = 100 - array_sum($cat_percentage);
+    }
+    $cats = implode(", ", $cats);
+    $cat_percentage = implode(", ", $cat_percentage);
+}
 
 require_once('head.php');
 $place = 'statistics';
@@ -72,7 +91,11 @@ $place = 'statistics';
                 <?php
                 if (!empty($budgets)) { ?>
                     <!-- saved percentage bar chart -->
-                    <div class="d-flex justify-content-center">
+                    <h6 class="text-center">
+                        Saved Budget Percentage for year <?= $year ?>
+                    </h6>
+                    <div class="d-flex justify-content-center pb-4">
+
                         <canvas id="savePercentage" style="width:100%;max-width:700px"></canvas>
                         <script>
                             var xValues = [<?= $savedPercentageMonths ?>];
@@ -93,14 +116,51 @@ $place = 'statistics';
                                     },
                                     title: {
                                         display: true,
-                                        text: "Saved Budget Percentage for year <?= $year ?>"
                                     }
                                 }
                             });
                         </script>
                     </div>
 
+
                 <?php } ?>
+
+                <?php if (!empty($purchases)) { ?>
+
+                    <!-- categories percentage -->
+                    <h6 class="text-center pt-4">
+                        Categories Purchases Percentage for year <?= $year ?> </h6>
+                    <div class="d-flex justify-content-center  pb-4">
+                        <canvas id="catPercentage" style="width:100%;max-width:700px"></canvas>
+
+                        <script>
+                            var xValues = [<?= $cats ?>];
+                            var yValues = [<?= $cat_percentage ?>];
+                            var barColors = ["#42c05e", "#243b28", "#90ffa6", "#07781b", "#b7ffcc", "#186306", "#aaffc0", "#198754", "#9dffb2", "#394d43", "#d1e7dd", "#83ff9a"]
+
+
+                            new Chart("catPercentage", {
+                                type: "pie",
+                                data: {
+                                    labels: xValues,
+                                    datasets: [{
+                                        backgroundColor: barColors,
+                                        data: yValues
+                                    }]
+                                },
+                                options: {
+                                    title: {
+                                        display: true,
+                                    }
+                                }
+                            });
+                        </script>
+                    </div>
+
+
+                <?php
+                }
+                ?>
 
             </div>
         </div>

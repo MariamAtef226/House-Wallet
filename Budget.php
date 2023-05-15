@@ -219,6 +219,30 @@ class Budget
             return false;
         }
     }
+
+    public static function total_consumption_per_year($id,$year){
+        try {
+            $connect = pdo_connect();
+            $statment = $connect->prepare("select SUM(consumed_budget) AS consumed_tot FROM budget WHERE (user_id = :id and yr =:year)");
+            $statment->bindValue("id", $id);
+            $statment->bindValue("year", $year);
+            $statment->execute();
+
+             // if found
+             if ($budget = $statment->fetchObject()) {
+                $connect = null; //end connection before return
+                return $budget->consumed_tot;
+            } else {
+                $connect = null;
+                return false;
+            }
+        } catch (PDOException $e) {
+            catchErrorToFile($e->getMessage(), $e->getCode());
+            return false;
+        }
+    }
+
+
 }
 
 

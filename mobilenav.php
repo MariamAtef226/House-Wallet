@@ -30,6 +30,11 @@
                         <i class="fa-regular fa-calendar-days me-2"></i>&nbsp;Past Month Data
                     </a>
                 </li>
+                <li class="nav-item">
+                <a href="stats.php" class="nav-link <?= $place == 'statistics' ? 'link-success' : 'link-dark' ?>" aria-current="page">
+                    <i class="fa-solid fa-chart-line me-2"></i>&nbsp;Budget Statistics
+                </a>
+            </li>
 
                 <li class="nav-item">
                     <a href="settings.php" class="nav-link <?= $place == 'settings' ? 'link-success' : 'link-dark' ?>" aria-current="page">

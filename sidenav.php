@@ -27,6 +27,11 @@
                     <i class="fa-regular fa-calendar-days me-2"></i>&nbsp;Past Months Data
                 </a>
             </li>
+            <li class="nav-item ms-2 mb-2">
+                <a href="stats.php" class="nav-link <?= $place == 'statistics' ? 'active bg-success' : 'link-dark' ?>" aria-current="page">
+                <i class="fa-solid fa-chart-line me-2"></i>&nbsp;Budget Statistics
+                </a>
+            </li>
 
             <li class="nav-item ms-2 mb-2">
                 <a href="settings.php" class="nav-link <?= $place == 'settings' ? 'active bg-success' : 'link-dark' ?>" aria-current="page">

@@ -69,9 +69,9 @@ $place = 'index';
             </div>
 
             <!-- remaining budget box - to be retrieved from database -->
-            <div class="curr-budget p-4 mt-5  <?= $alert == 0 ? 'bg-success' : 'bg-danger' ?> text-light">
+            <div class="curr-budget p-4 mt-5 <?= $alert == 0 ? 'bg-success' : 'bg-danger' ?> text-light">
                 <div class="d-flex justify-content-evenly">
-                    <div style="font-size:2.3rem;" class="pt-4 pb-4">
+                    <div style="font-size:2.3rem;" class="pt-4 pb-4 remaining">
                         <div>Remaining Amount of your Budget: </div>
                         <div class="text-warning"><?= $current ?></div>
 
@@ -79,7 +79,7 @@ $place = 'index';
 
                     <div class="vertical-bar-grey"></diV>
 
-                    <div class="ps-4 pt-3 pb-3 add-caption text-center" style="font-size:1.5rem;">
+                    <div class="ps-4 pt-3 pb-3 add-caption text-center d-flex d-md-block flex-column justify-content-center" style="font-size:1.5rem;">
                         Made a new purchase? <br> Go ahead!<br>
                         <button type="button" class="btn btn-light text-success mt-3 fw-bold" data-bs-toggle="modal" data-bs-target="#exampleModal2">Add It To Your List</button>
                     </div>
@@ -106,14 +106,14 @@ $place = 'index';
                                 <div class="row mb-4">
                                     <div>
                                         <label class="form-label">Item</label>
-                                        <input type="text" class="form-control" id="item" name="item">
+                                        <input type="text" class="form-control" id="item" name="item" placeholder="Enter items label here...">
                                     </div>
                                 </diV>
 
                                 <div class="row mb-4">
                                     <div>
                                         <label class="form-label">Price</label>
-                                        <input type="text" class="form-control" id="price" name="price">
+                                        <input type="text" class="form-control" id="price" name="price" placeholder="Enter a numeric value for the price...">
                                     </div>
                                 </div>
 
@@ -123,6 +123,7 @@ $place = 'index';
                                         <label class="form-label">Category</label>
                                         <select class="form-select" name="category" id="category">
                                             <option selected value="Groceries">Groceries</option>
+                                            <option value="Food">Food</option>
                                             <option value="Furniture">Furniture</option>
                                             <option value="Clothing">Clothing</option>
                                             <option value="Electronics">Electronics</option>

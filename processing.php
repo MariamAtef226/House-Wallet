@@ -184,6 +184,51 @@ function parseMonthYearPair($str){
     
 }
 
+
+// data for first chart in statistics page: saved percentage of budget
+function savedPercentChart($budgets)
+{
+    foreach ($budgets as $budget) {
+        $savedPercentage[] = ($budget->getInitial() - $budget->getConsumed()) * 100 / $budget->getInitial();
+        $savedPercentageMonths[] = "'" . getMonthName($budget->getMonth()) . "'";
+    }
+    if (!empty($savedPercentage) && !empty($savedPercentageMonths)) {
+        $savedPercentage = implode(", ", $savedPercentage);
+        $savedPercentageMonths = implode(", ", $savedPercentageMonths);
+        return array($savedPercentage, $savedPercentageMonths);
+    }
+
+    return false;
+}
+
+// data for second chart in statistics page: percentage of purchases for each category
+function purchasesPercentages($purchases, $tot_consumed)
+{
+    if (!empty($tot_consumed)) {
+        foreach ($purchases as $purchase) {
+            $cats[] = "'" . $purchase[0] . "'";
+            $cat_percentage[] = ($purchase[1] / $tot_consumed) * 100;
+        }
+    }
+    if (!empty($cats) && !empty($cat_percentage)) {
+
+        if (array_sum($cat_percentage) < 100) {
+            $cats[] = "'Others'";
+            $cat_percentage[] = 100 - array_sum($cat_percentage);
+        }
+        $cats = implode(", ", $cats);
+        $cat_percentage = implode(", ", $cat_percentage);
+        return array($cats, $cat_percentage);
+    }
+    return false;
+    
+
+}
+
+
+
+
+
 if (!empty($_GET['mode'])) {
     if ($_GET['mode'] == "logout") {
         logoutProcessing();

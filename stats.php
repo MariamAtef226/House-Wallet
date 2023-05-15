@@ -1,13 +1,15 @@
 <?php
 require_once('processing.php');
 credentialsCheck();
+Budget::create_budget_record(get_id()); // in case of no budget record for the current month, create a one
 
-// in case of no budget record for the current month, create a one
-Budget::create_budget_record(get_id());
+
 
 $month = date('m');
 $year = date('Y');
-$years = Budget::get_budget_years(get_id()); // returns budget years for his user
+$years = Budget::get_budget_years(get_id()); // returns budget years for this user
+
+
 
 // retrieve budgets based on year
 if (empty($_GET['year'])) {
@@ -17,43 +19,29 @@ if (empty($_GET['year'])) {
     $budgets = Budget::budgetsOfThisYear(get_id(), $year);
 }
 
-// data for first chart: saved percentage of budget
-
-foreach ($budgets as $budget) {
-    $temp = $budget->getInitial() - $budget->getConsumed();
-    $temp = $temp / $budget->getInitial();
-    $temp = $temp * 100;
-    $savedPercentage[] = $temp;
-    $savedPercentageMonths[] = "'" . getMonthName($budget->getMonth()) . "'";
-}
-if (!empty($savedPercentage) && !empty($savedPercentageMonths)) {
-    $savedPercentage = implode(", ", $savedPercentage);
-    $savedPercentageMonths = implode(", ", $savedPercentageMonths);
-}
-
-// data for second chart: percentage of purchases for each category
-
+// retieve purchases data for the pie chart
 $purchases = Purchase::get_purchases_percentage($year, get_id());
 $tot_consumed = Budget::total_consumption_per_year(get_id(), $year);
-if (!empty($tot_consumed)) {
-    foreach ($purchases as $purchase) {
-        $cats[] = "'" . $purchase[0] . "'";
-        $cat_percentage[] = ($purchase[1] / $tot_consumed) * 100;
-    }
-}
-if (!empty($cats) && !empty($cat_percentage)) {
 
-    if (array_sum($cat_percentage) < 100) {
-        $cats[] = "'Others'";
-        $cat_percentage[] = 100 - array_sum($cat_percentage);
-    }
-    $cats = implode(", ", $cats);
-    $cat_percentage = implode(", ", $cat_percentage);
-}
+
+$temp = savedPercentChart($budgets);
+$savedPercentage = $temp[0];
+$savedPercentageMonths = $temp[1];
+
+$temp = purchasesPercentages($purchases, $tot_consumed);
+$cats = $temp[0];
+$cat_percentage = $temp[1];
+
+$payCount = Purchase::visa_cash_count(get_id(), $year);
+$visa = $payCount["visa"];
+$cash = $payCount["cash"];
 
 require_once('head.php');
 $place = 'statistics';
 ?>
+
+
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
 </script>
 
@@ -113,16 +101,13 @@ $place = 'statistics';
                                 options: {
                                     legend: {
                                         display: false
-                                    },
-                                    title: {
-                                        display: true,
                                     }
                                 }
                             });
                         </script>
                     </div>
 
-
+                    <hr>
                 <?php } ?>
 
                 <?php if (!empty($purchases)) { ?>
@@ -149,9 +134,7 @@ $place = 'statistics';
                                     }]
                                 },
                                 options: {
-                                    title: {
-                                        display: true,
-                                    }
+
                                 }
                             });
                         </script>
@@ -161,6 +144,38 @@ $place = 'statistics';
                 <?php
                 }
                 ?>
+
+                <hr>
+
+                <!-- visa cash count -->
+                <h6 class="text-center pt-4">
+                    Cash Purchases vs Visa Purchases for year <?= $year ?> </h6>
+                <div class="d-flex justify-content-center  pb-4">
+                    <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
+
+                    <script>
+                        var xValues = ["Cash", "Visa"];
+                        var yValues = [<?= $cash ?>, <?= $visa ?>];
+                        var barColors = ["#aaffc0", "#198754"];
+
+                        new Chart("myChart", {
+                            type: "horizontalBar",
+                            data: {
+                                labels: xValues,
+                                datasets: [{
+                                    backgroundColor: barColors,
+                                    data: yValues
+                                }]
+                            },
+                            options: {
+                                legend: {
+                                    display: false
+                                }
+                            }
+                        });
+                    </script>
+                </div>
+
 
             </div>
         </div>

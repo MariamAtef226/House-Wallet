@@ -42,7 +42,7 @@ The application UI is built on desktop-first design basis. It's responsive on al
 
 <img src="https://www.freepnglogos.com/uploads/logo-mysql-png/logo-mysql-mysql-logo-png-images-are-download-crazypng-6.png" alt="mysql" width="50" height="25">   <img src="https://img.freepik.com/free-icon/php_318-698171.jpg" alt="php" width="25" height="25">
 <img src="https://www.freepnglogos.com/uploads/html5-logo-png/html5-logo-best-web-design-psd-html-cms-development-ecommerce-6.png" alt="html & css" width="75" height="30">  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Bootstrap_logo.svg/640px-Bootstrap_logo.svg.png" alt="bootstrap" width="25" height="25"> 
-
+<img src="https://avatars.githubusercontent.com/u/10342521?s=280&v=4" alt="chart.js" width="25" height="25">
 ### Pre-requisites :grey_question:
 
 None

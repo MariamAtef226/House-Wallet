@@ -19,7 +19,13 @@ $category = !empty($_GET['category']) ? $_GET['category'] : null;
 $above = !empty($_GET['above']) ? $_GET['above'] : null;
 $below = !empty($_GET['below']) ? $_GET['below'] : null;
 
-
+// Adding purchase handling
+if (!empty($_POST['price']) && !empty($_POST['item'])) {
+    $flag = Purchase::add_purchase($month,get_id(),$year);
+    if ($flag == false){
+        echo "<script>alert('Purchase Recording Has Failed For Some Reason')</script>";
+    }
+}
 
 // retrieve purchases based on month - year filter
 if (empty($_GET['monthyear'])) {
@@ -149,11 +155,92 @@ $place = 'purchases';
                 </div>
 
                 <div>
-                <button type="button" class="btn text-success mt-3 fw-bold plus-button me-1" data-bs-toggle="modal" data-bs-target="#exampleModal3" onmouseover="changecontent()" onmouseout="resetcontent()">+</button>
-
+                <button type="button" class="btn text-success mt-3 fw-bold plus-button me-1" data-bs-toggle="modal" data-bs-target="#exampleModal3">+</button>
                 </div>
 
             </div>
+
+                        <!-- Add Purchase Modal -->
+                        <div class="modal fade" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel3" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title text-success" id="exampleModalLabel3">Add a New Purchase ..</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+
+                            <form class="row g-3 mt-4 ps-4 add-form" method="post" action="purchases.php">
+
+                                <div class="row mb-4">
+                                    <div>
+                                        <label class="form-label">Item</label>
+                                        <input type="text" class="form-control" id="item" name="item" placeholder="Enter items label here...">
+                                    </div>
+                                </diV>
+
+                                <div class="row mb-4">
+                                    <div>
+                                        <label class="form-label">Price</label>
+                                        <input type="text" class="form-control" id="price" name="price" placeholder="Enter a numeric value for the price...">
+                                    </div>
+                                </div>
+
+
+                                <div class="row mb-4">
+                                    <div>
+                                        <label class="form-label">Category</label>
+                                        <select class="form-select" name="category" id="category">
+                                            <option selected value="Groceries">Groceries</option>
+                                            <option value="Food">Food</option>
+                                            <option value="Furniture">Furniture</option>
+                                            <option value="Clothing">Clothing</option>
+                                            <option value="Electronics">Electronics</option>
+                                            <option value="Books">Books</option>
+                                            <option value="Toys">Toys</option>
+                                            <option value="Outing">Outing</option>
+                                            <option value="Home Decor">Home Decor</option>
+                                            <option value="Jewellery">Jewellery</option>
+                                            <option value="Fitness Equipment">Fitness Equipment</option>
+                                            <option value="Car Maintenance">Car Maintenance</option>
+                                            <option value="Beauty Products">Beauty Products</option>
+                                            <option value="Services">Services</option>
+                                            <option value="Medicine">Medicine</option>
+                                            <option value="Others">Others</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="row mb-4">
+                                    <div>
+                                        <label class="form-label">Date of Purchasing Process</label>
+                                        <input type="date" class="form-control" id="date" name="date">
+                                    </div>
+                                </div>
+
+                                <div class="row mb-4">
+                                    <div>
+                                        <label class="form-label">Payment Method</label>
+                                        <select  class="form-select" name="paymethod" id="paymethod">
+                                            <option selected value="cash">Cash</option>
+                                            <option value="visa">Visa</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                    <button type="submit" class="btn btn-success">Add</button>
+                                </div>
+
+                            </form>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
 
             <!-- purchases table -->
             <div class="p-2 pt-0 table-responsive p-table">

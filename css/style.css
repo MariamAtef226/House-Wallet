@@ -128,7 +128,7 @@ body {
 }
 
 
-.plus-button:hover{
+.plus-button:hover, .plus-button:active, .plus-button:focus{
   background-color: var(--lightest-green);  
 }
 /* responsive styling -- mobile view */

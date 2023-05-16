@@ -14,8 +14,8 @@ if (!empty($_POST['signup'])) {
 Budget::create_budget_record(get_id());
 
 
-$month = date('m'); // gets current month
-$year = date('Y'); // gets current month
+$month = 1; // gets current month
+$year = 2022; // gets current month
 
 
 // Adding purchase handling

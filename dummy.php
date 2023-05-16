@@ -41,7 +41,7 @@ $current = $initial - $consumed;
 
 $mostPurchasedCategory = Purchase::most_purchased_category($month,get_id(),$year);
 $payCount = Purchase::visa_cash_count(get_id(),$year,$month);
-$visa = $payCount["visa"];
+$visa = $payCount["cash"];
 $cash = $payCount["cash"];
 
 // handle alert case

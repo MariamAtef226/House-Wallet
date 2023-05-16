@@ -18,16 +18,6 @@ $month = date('m'); // gets current month
 $year = date('Y'); // gets current month
 
 
-// Adding purchase handling
-if (!empty($_POST['price']) && !empty($_POST['item'])) {
-    $flag = Purchase::add_purchase($month,get_id(),$year);
-    if ($flag == false){
-        echo "<script>alert('Purchase Recording Has Failed For Some Reason')</script>";
-    }
-}
-
-
-
 $user = User::find_user(get_id()); // retrieve current user
 $budget = Budget::budget_details(get_id(), $month,$year); // retrieve current month budget
 
@@ -101,7 +91,7 @@ $place = 'index';
                         </div>
                         <div class="modal-body">
 
-                            <form class="row g-3 mt-4 ps-4 add-form" method="post" action="index.php">
+                            <form class="row g-3 mt-4 ps-4 add-form" method="post" action="add-delete-process.php">
 
                                 <div class="row mb-4">
                                     <div>
@@ -158,6 +148,7 @@ $place = 'index';
                                         </select>
                                     </div>
                                 </div>
+                                <input type="hidden" name="source" value="index.php">
 
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>

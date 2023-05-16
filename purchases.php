@@ -19,13 +19,6 @@ $category = !empty($_GET['category']) ? $_GET['category'] : null;
 $above = !empty($_GET['above']) ? $_GET['above'] : null;
 $below = !empty($_GET['below']) ? $_GET['below'] : null;
 
-// Adding purchase handling
-if (!empty($_POST['price']) && !empty($_POST['item'])) {
-    $flag = Purchase::add_purchase($month,get_id(),$year);
-    if ($flag == false){
-        echo "<script>alert('Purchase Recording Has Failed For Some Reason')</script>";
-    }
-}
 
 // retrieve purchases based on month - year filter
 if (empty($_GET['monthyear'])) {
@@ -46,7 +39,7 @@ $place = 'purchases';
 
 
 <body class="wave-bg" style="background-image:url('imgs/wave.svg')">
-    
+
     <div class="row m-0">
 
         <?php
@@ -153,15 +146,19 @@ $place = 'purchases';
                         </div>
                     </form>
                 </div>
-
-                <div>
-                <button type="button" class="btn text-success mt-3 fw-bold plus-button me-1" data-bs-toggle="modal" data-bs-target="#exampleModal3">+</button>
+                <div class="d-flex align-items-end ">
+                    <div class="text-success pe-3 d-none d-md-block" style="font-size:0.8rem;">
+                        Add a new purchase
+                    </div>
+                    <div>
+                        <button type="button" class="btn text-success mt-3 fw-bold plus-button me-1" data-bs-toggle="modal" data-bs-target="#exampleModal3">+</button>
+                    </div>
                 </div>
 
             </div>
 
-                        <!-- Add Purchase Modal -->
-                        <div class="modal fade" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel3" aria-hidden="true">
+            <!-- Add Purchase Modal -->
+            <div class="modal fade" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel3" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -170,7 +167,7 @@ $place = 'purchases';
                         </div>
                         <div class="modal-body">
 
-                            <form class="row g-3 mt-4 ps-4 add-form" method="post" action="purchases.php">
+                            <form class="row g-3 mt-4 ps-4 add-form" method="post" action="add-delete-process.php">
 
                                 <div class="row mb-4">
                                     <div>
@@ -221,12 +218,15 @@ $place = 'purchases';
                                 <div class="row mb-4">
                                     <div>
                                         <label class="form-label">Payment Method</label>
-                                        <select  class="form-select" name="paymethod" id="paymethod">
+                                        <select class="form-select" name="paymethod" id="paymethod">
                                             <option selected value="cash">Cash</option>
                                             <option value="visa">Visa</option>
                                         </select>
                                     </div>
                                 </div>
+
+                                <input type="hidden" name="source" value="purchases.php">
+
 
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
@@ -286,7 +286,7 @@ $place = 'purchases';
                                             <div class="modal-body">Are you sure you want to delete this purchase?
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                                    <a href="processing.php?delete=<?= $p->getId() ?>&monthyear=<?= getMonthName($month) . $year ?>" class="btn btn-danger text-decoration-none">Delete</a>
+                                                    <a href="add-delete-process.php?delete=<?= $p->getId() ?>&monthyear=<?= getMonthName($month) . $year ?>" class="btn btn-danger text-decoration-none">Delete</a>
 
                                                 </div>
                                             </div>

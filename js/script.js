@@ -255,7 +255,7 @@ function checkViewportWidth() {
 
   // Execute the function only if viewport width is greater than the threshold
   if (viewportWidth > desktopThreshold) {
-    console.log(viewportWidth);
+
     var button = document.querySelector(".plus-button");
    
     button.addEventListener("mouseover", (evnt) => {
@@ -277,20 +277,20 @@ function checkViewportWidth() {
   }
 }
 
-function changecontent() {
-  var button = document.querySelector(".plus-button");
-  button.style.fontSize = "0.8rem";
-  button.style.width = "160px";
+// function changecontent() {
+//   var button = document.querySelector(".plus-button");
+//   button.style.fontSize = "0.8rem";
+//   button.style.width = "160px";
 
-  setTimeout(function () {
-    button.innerHTML = "Add a new purchase";
-  }, 650);
-}
+//   setTimeout(function () {
+//     button.innerHTML = "Add a new purchase";
+//   }, 650);
+// }
 
-function resetcontent() {
-  var button = document.querySelector(".plus-button");
-  button.style.fontSize = "1rem";
+// function resetcontent() {
+//   var button = document.querySelector(".plus-button");
+//   button.style.fontSize = "1rem";
 
-  button.style.width = "35px";
-  button.innerHTML = "+";
-}
+//   button.style.width = "35px";
+//   button.innerHTML = "+";
+// }

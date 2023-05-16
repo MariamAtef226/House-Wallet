@@ -197,6 +197,13 @@ window.onload = function () {
       // NB: empty date is set by default to current date in php
     });
   }
+
+
+  // to cause smoothness of width change for add button in purchases page
+  var button = document.querySelector(".plus-button");
+  if (button != null) {
+    button.style.width = "35px";
+  }
 };
 
 // This function prepares the login display
@@ -237,4 +244,22 @@ function signupSetup() {
 function ValidateEmail(mail) {
   if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail)) return true;
   return false;
+}
+
+function changecontent() {
+  var button = document.querySelector(".plus-button");
+  button.style.fontSize = "0.8rem";
+  button.style.width = "160px";
+
+  setTimeout(function () {
+    button.innerHTML = "Add a new purchase";
+  }, 650);
+}
+
+function resetcontent() {
+  var button = document.querySelector(".plus-button");
+  button.style.fontSize = "1rem";
+
+  button.style.width = "35px";
+  button.innerHTML = "+";
 }

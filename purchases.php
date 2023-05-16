@@ -119,10 +119,10 @@ $place = 'purchases';
             <?php } ?>
 
             <!-- header -->
-            <div class="header-purchases p-4 pb-0 mt-1 ">
+            <div class="header-purchases p-2 pb-0 mt-1 d-flex justify-content-between align-items-center ">
 
                 <!-- displayed month filter -->
-                <div style="font-size:2.3rem;" class="pt-4">
+                <div style="font-size:2.3rem;" class="pt-4 ">
                     <form class="disp-purchases-form mb-0 d-flex align-items-center" method="get" action="purchases.php" onchange="submit()">
                         <div class="col-auto">
                             <label class="col-form-label pe-2"> Purchases for Month</label>
@@ -146,6 +146,11 @@ $place = 'purchases';
                             </select>
                         </div>
                     </form>
+                </div>
+
+                <div>
+                <button type="button" class="btn text-success mt-3 fw-bold plus-button me-1" data-bs-toggle="modal" data-bs-target="#exampleModal3" onmouseover="changecontent()" onmouseout="resetcontent()">+</button>
+
                 </div>
 
             </div>

@@ -119,6 +119,18 @@ body {
 .the-table{
   background-color: rgba(255,255,255,0.7);
 }
+
+/* purchases page add button*/
+.plus-button{
+  background-color: var(--lightest-green);
+  border:hidden;
+  transition: width 0.8s ease;
+}
+
+
+.plus-button:hover{
+  background-color: var(--lightest-green);  
+}
 /* responsive styling -- mobile view */
 /* following Desktop First scheme*/
 
@@ -147,10 +159,14 @@ body {
     .add-caption{
       align-items: center;
     }
-    .disp-purchases-form, .past-form-filter{
+     .past-form-filter{
       text-align: center;
       font-size: 1.3rem !important;
       justify-content: center;
+    }
+    .disp-purchases-form{
+      font-size: 1.3rem !important;
+
     }
     select{
       font-size: 1.2rem !important;

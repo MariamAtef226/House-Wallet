@@ -203,9 +203,7 @@ window.onload = function () {
   if (button != null) {
     button.style.width = "35px";
   }
-  checkViewportWidth();
 };
-window.addEventListener("resize", checkViewportWidth);
 
 // This function prepares the login display
 function loginSetup() {
@@ -247,50 +245,3 @@ function ValidateEmail(mail) {
   return false;
 }
 
-function checkViewportWidth() {
-  var viewportWidth = window.innerWidth || document.documentElement.clientWidth;
-
-  // Define the threshold width to determine desktop view
-  var desktopThreshold = 768; // Adjust this value as per your needs
-
-  // Execute the function only if viewport width is greater than the threshold
-  if (viewportWidth > desktopThreshold) {
-
-    var button = document.querySelector(".plus-button");
-   
-    button.addEventListener("mouseover", (evnt) => {
-      button.style.fontSize = "0.8rem";
-      button.style.width = "160px";
-
-      setTimeout(function () {
-        button.innerHTML = "Add a new purchase";
-      }, 650);
-    });
-
-    button.addEventListener("mouseout", (evnt) => {
-      button.style.fontSize = "1rem";
-      button.style.width = "35px";
-      button.innerHTML = "+";
-    }
-      
-      )
-  }
-}
-
-// function changecontent() {
-//   var button = document.querySelector(".plus-button");
-//   button.style.fontSize = "0.8rem";
-//   button.style.width = "160px";
-
-//   setTimeout(function () {
-//     button.innerHTML = "Add a new purchase";
-//   }, 650);
-// }
-
-// function resetcontent() {
-//   var button = document.querySelector(".plus-button");
-//   button.style.fontSize = "1rem";
-
-//   button.style.width = "35px";
-//   button.innerHTML = "+";
-// }

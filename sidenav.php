@@ -38,6 +38,13 @@
                     <i class="fa-solid fa-gear me-2"></i>&nbsp;Settings
                 </a>
             </li>
+
+            <li class="nav-item ms-2 mb-2">
+                <a href="#" class="nav-link <?= $place == 'guide' ? 'active bg-success' : 'link-dark' ?>" aria-current="page">
+                <i class="fa-solid fa-question me-2"></i>&nbsp;User Guide
+                </a>
+            </li>
+            
         </ul>
     </div>
 

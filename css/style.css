@@ -86,8 +86,8 @@ body {
 
 /* overview page styling */
 
-.overview {
-  animation: fade-in 1.4s;
+.overview, .purchases, .past, .settings {
+  animation: fade-in 1s;
 }
 
 .overview > h1 {

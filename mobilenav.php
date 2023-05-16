@@ -42,6 +42,11 @@
                     </a>
 
                 </li>
+                <li class="nav-item">
+                <a href="#" class="nav-link <?= $place == 'guide' ? 'link-success' : 'link-dark' ?>" aria-current="page">
+                <i class="fa-solid fa-question me-2"></i>&nbsp;User Guide
+                </a>
+            </li>
 
             </ul>
 

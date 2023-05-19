@@ -114,14 +114,16 @@ $place = 'purchases';
             <!-- display deletion success bar -->
             <?php
             if (!empty($_GET['successdel'])) { ?>
-                <div class="text-center bg-warning delete-success">Purchase is successfully deleted! &nbsp;Note: any set filters have been cleared!</div>
+                <div class="del-success">
+                    <div class="text-center bg-warning">Purchase is successfully deleted! &nbsp;Note: any set filters have been cleared!</div>
+                </div>
             <?php } ?>
 
             <!-- header -->
             <div class="header-purchases p-2 pb-0 mt-1 d-flex justify-content-between align-items-md-center align-items-end">
 
                 <!-- displayed month filter -->
-                <div style="font-size:2.3rem;" class="pt-4 ">
+                <div style="font-size:2.3rem;" class="pt-2 ">
                     <form class="disp-purchases-form mb-0 d-flex align-items-md-center flex-column flex-md-row" method="get" action="purchases.php" onchange="submit()">
                         <div class="col-auto">
                             <label class="col-form-label pe-2 ps-2 ps-md-0"> Purchases for Month</label>

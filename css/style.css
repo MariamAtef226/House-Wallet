@@ -136,8 +136,12 @@ body {
   transition: width 0.8s ease;
 }
 
-.delete-success{
-  font-weight: bold;
+.del-success{
+animation: fade-out 2s forwards;
+animation-delay: 2s;
+}
+.accordion-button:focus{
+
 }
 
 .plus-button:hover, .plus-button:active, .plus-button:focus{

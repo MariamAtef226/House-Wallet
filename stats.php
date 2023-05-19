@@ -55,9 +55,9 @@ $place = 'statistics';
         <div class="past stats" style="padding-left:280px; padding-right:0;">
             <div class="header-purchases">
 
-                <!-- displayed month filter -->
+                <!-- displayed year filter -->
                 <div style="font-size:2rem;" class="pt-2 text-center bg-success text-light">
-                    <form method="get" action="stats.php" onchange="submit()" class="p-2 d-flex align-items-center past-form-filter">
+                    <form method="get" action="stats.php" onchange="submit()" class="p-2 d-flex align-items-center past-form-filter flex-column flex-md-row">
                         <label class="form-label col-auto ps-md-3 pe-2 pe-md-3"> Displaying Statistics for year
                         </label>
                         <div class="col-auto">

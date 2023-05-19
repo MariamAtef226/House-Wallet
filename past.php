@@ -35,7 +35,7 @@ $place = 'past data';
 
                 <!-- displayed month filter -->
                 <div style="font-size:2rem;" class="pt-2 text-center bg-success text-light">
-                    <form method="get" action="past.php" onchange="submit()" class="p-2 d-flex align-items-center past-form-filter">
+                    <form method="get" action="past.php" onchange="submit()" class="p-2 d-flex align-items-center past-form-filter flex-column flex-md-row">
                         <label class="form-label col-auto ps-md-3 pe-2 pe-md-3"> Displaying Budgets for year
                         </label>
                             <div class="col-auto">
@@ -61,7 +61,7 @@ $place = 'past data';
             if (!empty($budgets)) {
                 foreach ($budgets as $budget) { ?>
                     <div class="mb-3">
-                        <div style="font-size:2.3rem;" class="pt-4 ps-4">
+                        <div style="font-size:2.3rem;" class="pt-4 ps-md-4 ps-2">
                             Budgeting Data for Month <span class="text-success"> <?= getMonthName($budget->getMonth()) . " " . $budget->getYear() ?></span>:
                         </div>
 

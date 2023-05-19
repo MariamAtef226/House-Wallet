@@ -54,14 +54,14 @@ $place = 'index';
         <div class="overview" style="padding-left:280px; padding-right:0;">
             <!-- Landing - retrieve name from database-->
             <div class="text-center mt-5 landing">
-                <h1 class="text-success" style="font-size:5.5rem;"> Hello, <?= $username?>!</h1>
+                <h1 class="text-success" style="font-size:5.4rem;"> Hello, <?= $username?>!</h1>
                 <div class="text-secondary" style="font-size:1.5rem;">Manage Your House Budget Fast and Smoothly ...</div>
             </div>
 
             <!-- remaining budget box - to be retrieved from database -->
             <div class="curr-budget p-4 mt-5 <?= $alert == 0 ? 'bg-success' : 'bg-danger' ?> text-light">
-                <div class="d-flex justify-content-evenly">
-                    <div style="font-size:2.3rem;" class="pt-4 pb-4 remaining">
+                <div class="d-flex justify-content-evenly flex-column flex-md-row">
+                    <div style="font-size:2.3rem;" class="pe-0 pe-md-2 pt-4 pb-4 text-center text-md-start">
                         <div>Remaining Amount of your Budget: </div>
                         <div class="text-warning"><?= $current ?></div>
 
@@ -69,7 +69,7 @@ $place = 'index';
 
                     <div class="vertical-bar-grey"></diV>
 
-                    <div class="ps-4 pt-3 pb-3 add-caption text-center d-flex d-md-block flex-column justify-content-center" style="font-size:1.5rem;">
+                    <div class="ps-md-4 pt-3 pb-3 add-caption text-center d-flex d-md-block flex-column justify-content-center" style="font-size:1.5rem;">
                         Made a new purchase? <br> Go ahead!<br>
                         <button type="button" class="btn btn-light text-success mt-3 fw-bold" data-bs-toggle="modal" data-bs-target="#exampleModal2">Add It To Your List</button>
                     </div>

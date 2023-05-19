@@ -114,17 +114,17 @@ $place = 'purchases';
             <!-- display deletion success bar -->
             <?php
             if (!empty($_GET['successdel'])) { ?>
-                <div class="text-center bg-warning">Purchase is successfully deleted! &nbsp;Note: any set filters have been cleared!</div>
+                <div class="text-center bg-warning delete-success">Purchase is successfully deleted! &nbsp;Note: any set filters have been cleared!</div>
             <?php } ?>
 
             <!-- header -->
-            <div class="header-purchases p-2 pb-0 mt-1 d-flex justify-content-between align-items-center ">
+            <div class="header-purchases p-2 pb-0 mt-1 d-flex justify-content-between align-items-md-center align-items-end">
 
                 <!-- displayed month filter -->
                 <div style="font-size:2.3rem;" class="pt-4 ">
-                    <form class="disp-purchases-form mb-0 d-flex align-items-center" method="get" action="purchases.php" onchange="submit()">
+                    <form class="disp-purchases-form mb-0 d-flex align-items-md-center flex-column flex-md-row" method="get" action="purchases.php" onchange="submit()">
                         <div class="col-auto">
-                            <label class="col-form-label pe-2"> Purchases for Month</label>
+                            <label class="col-form-label pe-2 ps-2 ps-md-0"> Purchases for Month</label>
                         </div>
                         <div class="col-auto">
 
@@ -147,11 +147,11 @@ $place = 'purchases';
                     </form>
                 </div>
                 <div class="d-flex align-items-end ">
-                    <div class="text-success pe-3 d-none d-md-block" style="font-size:0.8rem;">
+                    <div class="text-success pe-3 d-none d-lg-block" style="font-size:0.8rem;">
                         Add a new purchase
                     </div>
                     <div>
-                        <button type="button" class="btn text-success mt-3 fw-bold plus-button me-1" data-bs-toggle="modal" data-bs-target="#exampleModal3">+</button>
+                        <button type="button" class="btn text-success mt-3 fw-bold plus-button me-1 mb-2 mb-md-0" data-bs-toggle="modal" data-bs-target="#exampleModal3">+</button>
                     </div>
                 </div>
 
@@ -250,10 +250,10 @@ $place = 'purchases';
                             <th scope="col" class="d-none d-md-table-cell">#</th>
                             <th scope="col">Date</th>
                             <th scope="col">Purchase</th>
-                            <th scope="col">Category</th>
-                            <th scope="col">Price</th>
-                            <th scope="col">Paid by</th>
-                            <?= $month == date('m') && $year == date('Y') ? '<th scope="col">Remove</th>' : '' ?>
+                            <th scope="col" class="d-none d-md-table-cell">Category</th>
+                            <th scope="col" class="d-none d-md-table-cell">Price</th>
+                            <th scope="col" class="d-none d-md-table-cell">Paid by</th>
+                            <?= $month == date('m') && $year == date('Y') ? '<th class="d-none d-md-table-cell" scope="col">Remove</th>' : '' ?>
                         </tr>
                     </thead>
 
@@ -266,12 +266,33 @@ $place = 'purchases';
                         ?>
                                 <tr>
                                     <th scope="row" class="d-none d-md-table-cell"><?= $i++ ?></th>
-                                    <td><?= $p->getDate(); ?></td>
-                                    <td><?= $p->getName(); ?></td>
-                                    <td><?= $p->getCategory(); ?></td>
-                                    <td><?= $p->getPrice(); ?></td>
-                                    <td><?= $p->getPayment(); ?></td>
-                                    <?= ($month == date('m') && $year == date('Y')) ? '<td><i data-bs-toggle="modal" data-bs-target="#exampleModal3' . $p->getId() . '" class="fa-solid fa-trash-can text-danger fs-5" ></i></td>' : '' ?>
+                                    <td><?= substr($p->getDate(), -5); ?></td>
+                                    <td class="d-none d-md-table-cell"><?= $p->getName(); ?></td>
+                                    <td class="d-table-cell d-md-none">
+                                        <div class="accordion accordion-flush m-0 p-1 text-start " id="accordionFlushExample">
+                                            <div class="accordion-item ">
+                                                <h2 class="accordion-header " id="flush-heading<?= $i ?>">
+                                                    <button class="accordion-button border-0 collapsed p-0" <?= $i % 2 == 0 ? ' style="background-color:#f2f2f2;" ' : '' ?>type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse<?= $i ?>" aria-expanded="false" aria-controls="flush-collapse<?= $i ?>">
+                                                        <?= $p->getName(); ?>
+                                                    </button>
+                                                </h2>
+                                                <div id="flush-collapse<?= $i ?>" class="accordion-collapse collapse" aria-labelledby="flush-heading<?= $i ?>" data-bs-parent="#accordionFlushExample">
+                                                    <div class="accordion-body m-0 p-1">
+                                                        Category: <span class="text-success"><?= $p->getCategory(); ?></span><br>
+                                                        Price: <span class="text-success"><?= $p->getPrice(); ?></span><br>
+                                                        Pay Method: <span class="text-success"><?= $p->getPayment(); ?></span><br>
+                                                        <?= ($month == date('m') && $year == date('Y')) ? '<i data-bs-toggle="modal" data-bs-target="#exampleModal3' . $p->getId() . '" class=" fa-solid fa-trash-can text-danger fs-6" ></i>' : '' ?>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="d-none d-md-table-cell"><?= $p->getCategory(); ?></td>
+                                    <td class="d-none d-md-table-cell">><?= $p->getPrice(); ?></td>
+                                    <td class="d-none d-md-table-cell"><?= $p->getPayment(); ?></td>
+                                    <?= ($month == date('m') && $year == date('Y')) ? '<td class="d-none d-md-table-cell"><i data-bs-toggle="modal" data-bs-target="#exampleModal3' . $p->getId() . '" class="fa-solid fa-trash-can text-danger fs-5" ></i></td>' : '' ?>
+
                                 </tr>
 
                                 <!-- delete modal -->

@@ -143,8 +143,9 @@ animation-delay: 2s;
 
 
 .plus-button:hover, .plus-button:active, .plus-button:focus{
-  background-color: var(--lightest-green);  
+  background-color: var(--lightest-green) !important;  
 }
+
 /* responsive styling -- mobile view */
 /* following Desktop First scheme*/
 

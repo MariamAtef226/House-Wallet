@@ -274,7 +274,7 @@ $place = 'purchases';
                                         <div class="accordion accordion-flush m-0 p-1 text-start " id="accordionFlushExample">
                                             <div class="accordion-item ">
                                                 <h2 class="accordion-header " id="flush-heading<?= $i ?>">
-                                                    <button class="accordion-button border-0 collapsed p-0" <?= $i % 2 == 0 ? ' style="background-color:#f2f2f2;" ' : '' ?>type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse<?= $i ?>" aria-expanded="false" aria-controls="flush-collapse<?= $i ?>">
+                                                    <button class="accordion-button border-0 collapsed p-0" <?= $i % 2 == 0 ? ' style="background-color:#f2f2f2;" ' : 'style="background-color:white;"' ?>type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse<?= $i ?>" aria-expanded="false" aria-controls="flush-collapse<?= $i ?>">
                                                         <?= $p->getName(); ?>
                                                     </button>
                                                 </h2>

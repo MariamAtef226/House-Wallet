@@ -131,7 +131,7 @@ $place = 'purchases';
                         <div class="col-auto">
 
 
-                            <select name="monthyear" style="font-size:2rem;" class="text-success p-2 form-select border-white ">
+                            <select name="monthyear" style="font-size:1.8rem;" class="text-success p-2 pe-5 form-select border-white ">
                                 <?php
                                 if (!empty($pairs)) {
                                     foreach ($pairs as $pair) {
@@ -291,7 +291,7 @@ $place = 'purchases';
                                         </div>
                                     </td>
                                     <td class="d-none d-md-table-cell"><?= $p->getCategory(); ?></td>
-                                    <td class="d-none d-md-table-cell">><?= $p->getPrice(); ?></td>
+                                    <td class="d-none d-md-table-cell"><?= $p->getPrice(); ?></td>
                                     <td class="d-none d-md-table-cell"><?= $p->getPayment(); ?></td>
                                     <?= ($month == date('m') && $year == date('Y')) ? '<td class="d-none d-md-table-cell"><i data-bs-toggle="modal" data-bs-target="#exampleModal3' . $p->getId() . '" class="fa-solid fa-trash-can text-danger fs-5" ></i></td>' : '' ?>
 

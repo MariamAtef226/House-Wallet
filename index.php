@@ -76,15 +76,15 @@ $place = 'index';
                     </div>
                 </div>
 
-                <div class="budget-alert text-center pt-3 <?= $alert == 0 || $zero == 1 ? 'invisible' : '' ?> ">
+                <div class="budget-alert text-center pt-3 <?= $alert == 0 || $zero == 1 ? 'd-none' : '' ?> ">
                     Be Careful! You've consumed above <?= $alert_value ?>% of your initial budget!
                 </div>
 
-                <div class="budget-warning text-center pt-3 <?= $zero == 1 ? '' : 'invisible' ?> ">
+                <div class="budget-warning text-center pt-3 <?= $zero == 1 ? '' : 'd-none' ?> ">
                     You haven't set an initial budget yet. It's set as zero, so head to the settings and change it now!
                 </div>
 
-                <div class="budget-warning text-center pt-3 <?= $exceeded == 1 ? '' : 'invisible' ?> ">
+                <div class="budget-warning text-center pt-3 <?= $exceeded == 1 ? '' : 'd-none' ?> ">
                     Be Careful, your purchases have exceeded the initial budget you've set!
                 </div>
             </div>

@@ -198,7 +198,7 @@ class Budget
         $year = date('Y');
         try {
             $connect = pdo_connect();
-
+            
             $statment = $connect->prepare("select * FROM `budget` WHERE (user_id = :id and yr = :year and budget_month= :month)");
             $statment->bindValue("id", $id);
             $statment->bindValue("year", $year);
@@ -206,10 +206,22 @@ class Budget
             $statment->execute();
 
             if (!($statment->fetchObject())) { //if not found - create a budget record
+                
+                // check last month's initial budget to set this month's initial budget the same as it
+                $statment2 = $connect->prepare("select `initial_budget` from `budget` where (user_id = :id) order by budget_month desc, yr desc");
+                $statment2->bindValue("id", $id);
+                $statment2->execute();
+                if (!($val = $statment2->fetchObject())){ // if no previous records were found, set initial budget to 0
+                    $val = 0;
+                }
+                else{
+                    $val = $val->initial_budget;
+                }
                 $statment = $connect->prepare("INSERT INTO `budget`(`user_id`, `budget_month`, `initial_budget`, `consumed_budget`, `goal_budget`,`yr`)
-                VALUES (:id,:budget_month,0,0,0,:year)");
+                VALUES (:id,:budget_month,:val,0,0,:year)");
                 $statment->bindValue("id", $id);
                 $statment->bindValue("budget_month", $month);
+                $statment->bindValue("val", $val);
                 $statment->bindValue("year", $year);
                 $statment->execute();
             }

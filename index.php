@@ -36,7 +36,8 @@ $cash = $payCount["cash"];
 
 // handle alert case
 $alert = ($initial) * ($user->getAlert() / 100) <= $consumed ? 1 : 0; // to be retrieved from a function
-
+$zero = $initial == 0?1:0;
+$exceeded = $current < 0 ? 1 : 0;
 
 // related to UI
 require_once('head.php');
@@ -59,7 +60,7 @@ $place = 'index';
             </div>
 
             <!-- remaining budget box - to be retrieved from database -->
-            <div class="curr-budget p-4 mt-5 <?= $alert == 0 ? 'bg-success' : 'bg-danger' ?> text-light">
+            <div class="curr-budget p-4 mt-5 <?= $alert == 1 && $zero == 0 ? 'bg-danger' : ($zero == 1? 'bg-secondary':'bg-success') ?> text-light">
                 <div class="d-flex justify-content-evenly flex-column flex-md-row">
                     <div style="font-size:2.3rem;" class="pe-0 pe-md-2 pt-4 pb-4 text-center text-md-start">
                         <div>Remaining Amount of your Budget: </div>
@@ -75,8 +76,16 @@ $place = 'index';
                     </div>
                 </div>
 
-                <div class="budget-alert text-center pt-3 <?= $alert == 0 ? 'invisible' : '' ?> ">
+                <div class="budget-alert text-center pt-3 <?= $alert == 0 || $zero == 1 ? 'invisible' : '' ?> ">
                     Be Careful! You've consumed above <?= $alert_value ?>% of your initial budget!
+                </div>
+
+                <div class="budget-warning text-center pt-3 <?= $zero == 1 ? '' : 'invisible' ?> ">
+                    You haven't set an initial budget yet. It's set as zero, so head to the settings and change it now!
+                </div>
+
+                <div class="budget-warning text-center pt-3 <?= $exceeded == 1 ? '' : 'invisible' ?> ">
+                    Be Careful, your purchases have exceeded the initial budget you've set!
                 </div>
             </div>
 

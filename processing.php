@@ -189,8 +189,14 @@ function parseMonthYearPair($str){
 function savedPercentChart($budgets)
 {
     foreach ($budgets as $budget) {
+        if ($budget->getInitial() !=0){
         $savedPercentage[] = ($budget->getInitial() - $budget->getConsumed()) * 100 / $budget->getInitial();
         $savedPercentageMonths[] = "'" . getMonthName($budget->getMonth()) . "'";
+        }
+        else{
+            $savedPercentage[] = 0;
+            $savedPercentageMonths[] = "'" . getMonthName($budget->getMonth()) . "'";
+        }
     }
     if (!empty($savedPercentage) && !empty($savedPercentageMonths)) {
         $savedPercentage = implode(", ", $savedPercentage);
